@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'primeira-aula';
+  
+  age = 1;
+  title : string = 'Univás';
+  name = 'Rodrigo';
+  email = 'rodrigo@gmail.com';
+  cpf : number;
+  student = {
+    name: 'João',
+    email: 'jone@gmail.com'
+  };
+
+  saveAction() {
+    this.age++;
+    console.log('CPF atual:::' + this.cpf);
+  }
 }
