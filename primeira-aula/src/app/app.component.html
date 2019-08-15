@@ -16,3 +16,47 @@
 </div>
 
 <button (click)="saveAction()">Click Me</button>
+
+<div>
+  <label>A</label>
+  <input type="number" [(ngModel)]="valueA">
+</div>
+
+<div>
+  <label>B</label>
+  <input type="number" [(ngModel)]="valueB">
+</div>
+
+<button (click)="sum()">Somar</button>
+<div>
+  <label>Resultado:</label>
+  <input type="number" [(ngModel)]="valueC">
+</div>
+
+<div>
+  <p>{{ fakeStudent.name }}</p>
+  <p>{{ fakeStudent.email }}</p>
+  <p>{{ fakeStudent.cpf }}</p>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>E-mail</th>
+      <th>CPF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let std of students">
+      <td>{{ std.name }}</td>
+      <td>{{ std.email }}</td>
+      <td>{{ std.cpf }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
