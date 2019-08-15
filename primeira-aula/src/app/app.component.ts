@@ -25,6 +25,9 @@ export class AppComponent {
   students : Student[] = [];
 
   ngOnInit() {
+    this.newStudent = new Student();
+    this.studentList = [];
+
     console.log('INICIALIZAÇÃO!!!');
 
     this.fakeStudent = new Student();
@@ -50,4 +53,18 @@ export class AppComponent {
     this.valueC = this.valueA + this.valueB;
   }
 
+
+
+
+
+
+
+  ////////////NEW PART///////////////
+  newStudent: Student;
+  studentList: Student[];
+
+  saveStudent() {
+    this.studentList.push(this.newStudent);
+    this.newStudent = new Student();
+  }
 }
