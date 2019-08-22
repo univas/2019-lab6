@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Student } from './student';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,9 @@ import { Student } from './student';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  @ViewChild('studentForm', { static: true })
+  myForm : NgForm;
   
   age = 1;
   title : string = 'Univás';
@@ -66,5 +70,6 @@ export class AppComponent {
   saveStudent() {
     this.studentList.push(this.newStudent);
     this.newStudent = new Student();
+    this.myForm.reset();
   }
 }
