@@ -68,8 +68,26 @@ export class AppComponent {
   studentList: Student[];
 
   saveStudent() {
-    this.studentList.push(this.newStudent);
+    if (!this.newStudent.id) {
+      this.newStudent.id = (new Date()).getTime();
+      this.studentList.push(this.newStudent);
+    } else {
+      let oldStudent = this.studentList.find(s => s.id === this.newStudent.id);
+      oldStudent.name = this.newStudent.name;
+      oldStudent.email = this.newStudent.email;
+      oldStudent.cpf = this.newStudent.cpf;
+    }
+
     this.newStudent = new Student();
     this.myForm.reset();
+  }
+
+  deleteStudent(student : Student) {
+    let index = this.studentList.findIndex(s => s.id === student.id);
+    this.studentList.splice(index, 1);
+  }
+
+  editStudent(student : Student) {
+    this.newStudent = new Student(student.id, student.name, student.email, student.cpf);
   }
 }

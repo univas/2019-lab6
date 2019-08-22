@@ -95,6 +95,8 @@
       <th>Nome</th>
       <th>E-mail</th>
       <th>CPF</th>
+      <th>Editar</th>
+      <th>Remover</th>
     </tr>
   </thead>
   <tbody>
@@ -102,6 +104,8 @@
       <td>{{ st.name }}</td>
       <td>{{ st.email }}</td>
       <td>{{ st.cpf }}</td>
+      <td><input type="button" value="Editar" (click)="editStudent(st)"></td>
+      <td><input type="button" value="Remover" (click)="deleteStudent(st)"></td>
     </tr>
   </tbody>
 </table>
