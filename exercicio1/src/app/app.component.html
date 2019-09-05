@@ -45,6 +45,15 @@
       Campo obrigatório
     </span>  
   </div>
+
+  <div>
+    <label for="startDate">Data de Início:</label>
+    <input type="date" id="startDate" name="startDate" [(ngModel)]="newTeacher.startDate"
+      required #startDate="ngModel">
+    <span *ngIf="startDate.invalid && startDate.dirty">
+      Campo obrigatório
+    </span>
+  </div>
   <input type="button" value="Salvar" [disabled]="teacherForm.invalid" (click)="saveTeacher()">
 </form>
 
@@ -56,17 +65,23 @@
       <th>Professor</th>
       <th>Ano</th>
       <th>Semestre</th>
+      <th>Data Início</th>
       <th>Editar</th>
       <th>Remover</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let tc of teachers">
-      <td>{{ tc.course }}</td>
-      <td>{{ tc.subject }}</td>
+      <td>{{ tc.course | lowercase }}</td>
+      <td>{{ tc.subject | subject }}</td>
       <td>{{ tc.name }}</td>
-      <td>{{ tc.year }}</td>
+      <td>{{ tc.year | number : '3.3-5' }}</td>
       <td>{{ tc.semester }}</td>
+      <td>{{ tc.startDate | date : 'fullTime' }}</td>
+      <td>{{ tc.startDate | date : 'shortDate' }}</td>
+      <td>{{ tc.startDate | date : 'long' | uppercase }}</td>
+      <td>{{ tc.startDate | date : 'mediumTime' }}</td>
+      <td>{{ tc.startDate | date : 'dd-MM-yyyy' }}</td>
       <td><input type="button" value="Edit" (click)="edit(tc)"></td>
       <td><input type="button" value="Delete" (click)="delete(tc)"></td>
     </tr>
