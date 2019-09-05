@@ -7,9 +7,10 @@ export class Teacher {
     private _year: number;
     private _semester: number;
     private _startDate: Date;
+    private _cpf: number;
 
     constructor(id?: number, course?: string, subject?: string, name?: string, 
-        year?: number, semester?: number, startDate?: Date) {
+        year?: number, semester?: number, startDate?: Date, cpf?: number) {
         this._id = id;
         this._course = course;
         this._subject = subject;
@@ -17,6 +18,7 @@ export class Teacher {
         this._year = year;
         this._semester = semester;
         this._startDate = startDate;
+        this._cpf = cpf;
     }
 
     public get id(): number {
@@ -60,5 +62,11 @@ export class Teacher {
     }
     public set startDate(value: Date) {
         this._startDate = value;
+    }
+    public get cpf(): number {
+        return this._cpf;
+    }
+    public set cpf(value: number) {
+        this._cpf = value;
     }
 }

@@ -54,6 +54,15 @@
       Campo obrigatório
     </span>
   </div>
+
+  <div>
+    <label for="cpf">CPF:</label>
+    <input type="number" id="cpf" name="cpf" [(ngModel)]="newTeacher.cpf"
+      required #cpf="ngModel">
+    <span *ngIf="cpf.invalid && cpf.dirty">
+      Campo obrigatório
+    </span>
+  </div>
   <input type="button" value="Salvar" [disabled]="teacherForm.invalid" (click)="saveTeacher()">
 </form>
 
@@ -63,6 +72,7 @@
       <th>Curso</th>
       <th>Disciplina</th>
       <th>Professor</th>
+      <th>CPF</th>
       <th>Ano</th>
       <th>Semestre</th>
       <th>Data Início</th>
@@ -75,12 +85,15 @@
       <td>{{ tc.course | lowercase }}</td>
       <td>{{ tc.subject | subject }}</td>
       <td>{{ tc.name }}</td>
+      <td>{{ tc.cpf | cpf }}</td>
       <td>{{ tc.year | number : '3.3-5' }}</td>
       <td>{{ tc.semester }}</td>
+      <!--
       <td>{{ tc.startDate | date : 'fullTime' }}</td>
       <td>{{ tc.startDate | date : 'shortDate' }}</td>
       <td>{{ tc.startDate | date : 'long' | uppercase }}</td>
       <td>{{ tc.startDate | date : 'mediumTime' }}</td>
+      -->
       <td>{{ tc.startDate | date : 'dd-MM-yyyy' }}</td>
       <td><input type="button" value="Edit" (click)="edit(tc)"></td>
       <td><input type="button" value="Delete" (click)="delete(tc)"></td>
