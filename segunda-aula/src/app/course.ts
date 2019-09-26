@@ -1,7 +1,7 @@
 export class Course {
 
     private _id: number;
-    private _name: string;    
+    private _name: string;
     private _workload: number;
 
     constructor(id?: number, name?: string, workload?: number) {

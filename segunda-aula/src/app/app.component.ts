@@ -10,30 +10,41 @@ import { CourseService } from './course.service';
 export class AppComponent {
   
   newCourse: Course;
-  courses: Course[];
+  courses: Course[] = [];
 
   constructor(private courseService: CourseService) {
   }
 
   ngOnInit() {
     this.newCourse = new Course();
-    this.courses = this.courseService.getAll();
+    this.getAll();
+  }
+
+  getAll() {
+    this.courseService.getAll().subscribe(
+      data => this.courses = data
+    );
   }
 
   save() {
     if (!this.newCourse.id) {
-      this.newCourse.id = (new Date()).getTime();
-      this.courseService.save(this.newCourse);
+      this.courseService.save(this.newCourse).subscribe(
+        data => this.getAll()
+      );
 
     } else {
-      this.courseService.edit(this.newCourse);
+      this.courseService.edit(this.newCourse).subscribe(
+        data => this.getAll()
+      );
     }
 
     this.newCourse = new Course();
   }
 
   delete(course : Course) {
-    this.courseService.delete(course);
+    this.courseService.delete(course).subscribe(
+      data => this.getAll()
+    );
   }
 
   edit(course : Course) {

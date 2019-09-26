@@ -1,31 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Course } from './course';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+const httpOption = {
+  headers : new HttpHeaders({"Content-Type" : "application/json"})
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
 
-  private course: Course[] = [];
+  private url = 'https://pacific-wave-50441.herokuapp.com/api/courses';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getAll() {
-    return this.course;
+  getAll() : Observable<Course[]> {
+    return this.http.get<Course[]>(this.url);
   }
 
-  save(course : Course) {
-    this.course.push(course);
+  save(course : Course) : Observable<Course> {
+    return this.http.post<Course>(this.url, course, httpOption);
   }
 
-  edit(course : Course) {
-    let oldCourse = this.course.find(c => c.id === course.id);
-    oldCourse.name = course.name;
-    oldCourse.workload = course.workload;
+  edit(course : Course) : Observable<Course> {
+    return this.http.put<Course>(this.url + '/' + course.id, course, httpOption);
   }
 
-  delete(course : Course) {
-    let index = this.course.findIndex(c => c.id === course.id);
-    this.course.splice(index, 1);
+  delete(course : Course) : Observable<Course> {
+    return this.http.delete<Course>(this.url + '/' + course.id);
   }
 }
