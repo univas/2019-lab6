@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Car } from './car';
-import { CarService } from './car.service';
+import { Course } from './course';
+import { CourseService } from './course.service';
 
 @Component({
   selector: 'app-root',
@@ -9,35 +9,35 @@ import { CarService } from './car.service';
 })
 export class AppComponent {
   
-  newCar: Car;
-  cars: Car[];
+  newCourse: Course;
+  courses: Course[];
 
-  constructor(private carService: CarService) {
+  constructor(private courseService: CourseService) {
   }
 
   ngOnInit() {
-    this.newCar = new Car();
-    this.cars = this.carService.getAll();
+    this.newCourse = new Course();
+    this.courses = this.courseService.getAll();
   }
 
   save() {
-    if (!this.newCar.id) {
-      this.newCar.id = (new Date()).getTime();
-      this.carService.save(this.newCar);
+    if (!this.newCourse.id) {
+      this.newCourse.id = (new Date()).getTime();
+      this.courseService.save(this.newCourse);
 
     } else {
-      this.carService.edit(this.newCar);
+      this.courseService.edit(this.newCourse);
     }
 
-    this.newCar = new Car();
+    this.newCourse = new Course();
   }
 
-  delete(car : Car) {
-    this.carService.delete(car);
+  delete(course : Course) {
+    this.courseService.delete(course);
   }
 
-  edit(car : Car) {
-    this.newCar = new Car(car.id, car.brand, car.model, car.year);
+  edit(course : Course) {
+    this.newCourse = new Course(course.id, course.name, course.workload);
   }
 
 }

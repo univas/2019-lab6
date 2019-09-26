@@ -1,42 +1,36 @@
-<h1>Cadastro de Carros</h1>
+<h1>Cadastro de Cursos</h1>
 
 <form>
   <div>
-    <label for="brand">Marca:</label>
-    <input type="text" id="brand" name="brand" [(ngModel)]="newCar.brand">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="newCourse.name">
   </div>
   <div>
-    <label for="model">Modelo:</label>
-    <input type="text" id="model" name="model" [(ngModel)]="newCar.model">
-  </div>
-  <div>
-    <label for="year">Ano:</label>
-    <input type="number" id="year" name="year" [(ngModel)]="newCar.year">
+    <label for="workload">Carga Horária:</label>
+    <input type="number" id="workload" name="workload" [(ngModel)]="newCourse.workload">
   </div>
   <input type="button" value="Salvar" (click)="save()">
 </form>
 
-<h2>Carros cadastrados</h2>
+<h2>Cursos cadastrados</h2>
 <table>
   <thead>
     <tr>
-      <th>Marca</th>
-      <th>Modelo</th>
-      <th>Ano</th>
+      <th>Nome</th>
+      <th>Carga Horária</th>
       <th>Editar</th>
       <th>Remover</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngIf="cars.length === 0">
-      <td colspan="5">Nenhum carro cadastrado ainda!</td>
+    <tr *ngIf="courses.length === 0">
+      <td colspan="5">Nenhum curso cadastrado ainda!</td>
     </tr>
-    <tr *ngFor="let car of cars">
-      <td>{{ car.brand }}</td>
-      <td>{{ car.model }}</td>
-      <td>{{ car.year }}</td>
-      <td><input type="button" value="Editar" (click)="edit(car)"></td>
-      <td><input type="button" value="Excluir" (click)="delete(car)"></td>
+    <tr *ngFor="let course of courses">
+      <td>{{ course.name }}</td>
+      <td>{{ course.workload }}</td>
+      <td><input type="button" value="Editar" (click)="edit(course)"></td>
+      <td><input type="button" value="Excluir" (click)="delete(course)"></td>
     </tr>
   </tbody>
 </table>
