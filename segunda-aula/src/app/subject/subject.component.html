@@ -41,6 +41,7 @@
     <tr *ngFor="let subject of subjects">
       <td>{{ subject.name }}</td>
       <td>{{ subject.workload }}</td>
+      <td>{{ subject.period }}</td>
       <td><input type="button" value="Editar" (click)="edit(subject)"></td>
       <td><input type="button" value="Excluir" (click)="delete(subject)"></td>
     </tr>
