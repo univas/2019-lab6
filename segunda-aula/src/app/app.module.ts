@@ -1,22 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router'; 
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SubjectComponent } from './subject/subject.component';
+import { CourseComponent } from './course/course.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
+const routes : Routes = [
+  { path: 'course', component: CourseComponent },
+  { path: 'subject', component: SubjectComponent },
+  { path: '', redirectTo: 'course', pathMatch: 'full' },
+  { path: '**',  component: NotFoundComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    SubjectComponent
+    SubjectComponent,
+    CourseComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(
+      routes
+    )
   ],
   providers: [],
-  bootstrap: [SubjectComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
