@@ -19,7 +19,8 @@ export class MoneyComponent implements OnInit {
   }
 
   save() {
-    
+    this.moneys.push(this.newMoney);
+    this.newMoney = new Money();
   }
 
 }
