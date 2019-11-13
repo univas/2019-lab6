@@ -11,6 +11,8 @@ export class CourseComponent implements OnInit {
 
   newCourse: Course;
   courses: Course[] = [];
+  coursesFiltered: Course[] = [];
+  filterStr : string;
 
   constructor(private courseService: CourseService) {
   }
@@ -21,8 +23,11 @@ export class CourseComponent implements OnInit {
   }
 
   getAll() {
-    this.courseService.getAll().subscribe(
-      data => this.courses = data
+    this.courseService.getAll().subscribe( 
+      data => {
+        this.courses = data;
+        this.coursesFiltered = data;
+      }
     );
   }
 
@@ -51,5 +56,14 @@ export class CourseComponent implements OnInit {
     this.newCourse = new Course(course.id, course.name, course.workload);
   }
 
+  filter() {
+    if (this.filterStr && this.filterStr.trim() !== '') {
+      this.courses = this.coursesFiltered.filter(
+        x => x.name.toLowerCase().includes(this.filterStr.toLowerCase())
+      );
+    } else {
+      this.courses = this.coursesFiltered;
+    }
+  }
 
 }

@@ -8,10 +8,12 @@ import { AppComponent } from './app.component';
 import { SubjectComponent } from './subject/subject.component';
 import { CourseComponent } from './course/course.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MoneyComponent } from './money/money.component';
 
 const routes : Routes = [
   { path: 'course', component: CourseComponent },
   { path: 'subject', component: SubjectComponent },
+  { path: 'money', component: MoneyComponent },
   { path: '', redirectTo: 'course', pathMatch: 'full' },
   { path: '**',  component: NotFoundComponent }
 ];
@@ -21,7 +23,8 @@ const routes : Routes = [
     AppComponent,
     SubjectComponent,
     CourseComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    MoneyComponent
   ],
   imports: [
     BrowserModule,
