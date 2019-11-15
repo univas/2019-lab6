@@ -9,6 +9,7 @@ import { SubjectComponent } from './subject/subject.component';
 import { CourseComponent } from './course/course.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MoneyComponent } from './money/money.component';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 const routes : Routes = [
   { path: 'course', component: CourseComponent },
@@ -32,7 +33,8 @@ const routes : Routes = [
     HttpClientModule,
     RouterModule.forRoot(
       routes
-    )
+    ),
+    GoogleChartsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

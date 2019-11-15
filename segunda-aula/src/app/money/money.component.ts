@@ -9,7 +9,8 @@ import { Money } from '../money';
 export class MoneyComponent implements OnInit {
 
   newMoney: Money;
-  moneys: Money[];
+  moneys: Array<Array<any>>;
+  chart: {};
 
   constructor() { }
 
@@ -19,8 +20,23 @@ export class MoneyComponent implements OnInit {
   }
 
   save() {
-    this.moneys.push(this.newMoney);
+    let temp = [];
+    temp.push(this.newMoney.date);
+    temp.push(this.newMoney.value);
+    this.moneys.push(temp);
     this.newMoney = new Money();
+    this.generate();
+  }
+
+  generate() {
+    this.chart = {
+      title: 'Money',
+      type: 'LineChart',
+      width: 850,
+      height: 450,
+      data: this.moneys,
+      columnNames: ['Data', 'Valor']
+    };
   }
 
 }

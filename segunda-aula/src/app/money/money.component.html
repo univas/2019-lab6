@@ -3,7 +3,7 @@
 <form>
     <div>
         <label for="value">Valor:</label>
-        <input type="text" id="value" name="value" [(ngModel)]="newMoney.value">
+        <input type="number" id="value" name="value" [(ngModel)]="newMoney.value">
     </div>
     <div>
         <label for="date">Data:</label>
@@ -12,3 +12,12 @@
     <input type="button" value="Adicionar" (click)="save()">
 </form>
 
+<google-chart
+  [title]="chart.title"
+  [type]="chart.type"
+  [data]="chart.data"
+  [width]="chart.width"
+  [height]="chart.height"
+  [columnNames]="chart.columnNames"
+  [options]="chart.options">
+</google-chart>
