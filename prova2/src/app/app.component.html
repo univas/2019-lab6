@@ -1,1 +1,28 @@
-<h1>Campeonato Brasileiro</h1>
+<h1>Temperatura</h1>
+
+<form>
+  <input type="radio" id="sp" value="sp" name="city" checked  (change)="handleChange($event)">
+  <label for="sp">São Paulo</label>
+
+  <input type="radio" id="rj" value="rj" name="city" (change)="handleChange($event)">
+  <label for="rj">Rio de Janeiro</label>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dia</th>
+      <th>Min.</th>
+      <th>Máx.</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let we of weathers">
+      <td>{{ we.applicable_date }}</td>
+      <td>{{ we.min_temp }}</td>
+      <td>{{ we.max_temp }}</td>
+      <td><img src="assets/images/{{we.weather_state_abbr}}.svg" /></td>
+    </tr>
+  </tbody>
+</table>
